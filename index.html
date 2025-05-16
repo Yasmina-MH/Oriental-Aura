@@ -1,501 +1,371 @@
 <!DOCTYPE html>
-<html lang="fr" dir="ltr">
+<html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Oriental Aura - Cosmétiques marocains premium inspirés des traditions ancestrales">
-    
-    <!-- Préchargement des éléments critiques -->
-    <link rel="preload" href="css/main.css" as="style">
-    <link rel="preload" href="js/main.js" as="script">
-    
-    <!-- Favicon moderne -->
-    <link rel="apple-touch-icon" sizes="180x180" href="assets/favicon/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon/favicon-32x32.png">
-    
-    <!-- Police Google Fonts optimisée -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
-    
-    <!-- CSS -->
-    <link rel="stylesheet" href="css/main.css">
-    
-    <title>Oriental Aura | Beauté Marocaine Luxe</title>
+    <title>Oriental Aura - Beauté Marocaine Traditionnelle</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --marron: #8B4513;
+            --beige: #F5E8D0;
+            --doré: #D4AF37;
+            --blanc: #FFFFFF;
+            --noir: #333333;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Playfair Display', serif;
+        }
+
+        body {
+            background-color: var(--beige);
+            color: var(--noir);
+            line-height: 1.6;
+        }
+
+        /* Header */
+        header {
+            background: var(--blanc);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: fixed;
+            width: 100%;
+            z-index: 1000;
+            padding: 15px 0;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 28px;
+            font-weight: 700;
+            color: var(--marron);
+            text-decoration: none;
+        }
+
+        .logo img {
+            height: 50px;
+            vertical-align: middle;
+        }
+
+        /* Navigation */
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+
+        nav ul li {
+            margin-left: 30px;
+            position: relative;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: var(--noir);
+            font-weight: 500;
+            transition: all 0.3s;
+            padding: 5px 0;
+        }
+
+        nav ul li a:hover {
+            color: var(--marron);
+        }
+
+        nav ul li a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            background: var(--marron);
+            bottom: 0;
+            left: 0;
+            transition: width 0.3s;
+        }
+
+        nav ul li a:hover::after {
+            width: 100%;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), 
+                        url('https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-position: center;
+            height: 90vh;
+            display: flex;
+            align-items: center;
+            padding-top: 80px;
+            color: var(--blanc);
+            text-align: center;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .hero h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+
+        .hero p {
+            font-size: 20px;
+            margin-bottom: 30px;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            background: var(--marron);
+            color: var(--blanc);
+            text-decoration: none;
+            border-radius: 30px;
+            font-weight: 600;
+            transition: all 0.3s;
+            margin: 0 10px;
+        }
+
+        .btn:hover {
+            background: var(--doré);
+            transform: translateY(-3px);
+        }
+
+        /* Produits */
+        .products-section {
+            padding: 80px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+            font-size: 32px;
+            color: var(--marron);
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 3px;
+            background: var(--marron);
+            margin: 15px auto;
+        }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 30px;
+        }
+
+        .product-card {
+            background: var(--blanc);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: all 0.3s;
+        }
+
+        .product-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+        }
+
+        .product-image {
+            height: 300px;
+            overflow: hidden;
+        }
+
+        .product-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+
+        .product-card:hover .product-image img {
+            transform: scale(1.1);
+        }
+
+        .product-info {
+            padding: 20px;
+            text-align: center;
+        }
+
+        .product-info h3 {
+            margin-bottom: 10px;
+            font-size: 20px;
+        }
+
+        .product-price {
+            color: var(--marron);
+            font-weight: 700;
+            font-size: 20px;
+            margin-bottom: 15px;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+            }
+
+            nav ul {
+                margin: 20px 0;
+            }
+
+            nav ul li {
+                margin: 0 15px;
+            }
+
+            .hero h1 {
+                font-size: 36px;
+            }
+
+            .hero p {
+                font-size: 18px;
+            }
+        }
+    </style>
 </head>
 <body>
-    <!-- Barre d'information supérieure -->
-    <div class="top-bar">
+    <!-- Header -->
+    <header>
         <div class="container">
-            <p>Livraison offerte dès 60€ | Retours gratuits sous 30 jours</p>
-            <div class="lang-currency">
-                <select id="language-selector">
-                    <option value="fr">FR</option>
-                    <option value="en">EN</option>
-                </select>
-                <select id="currency-selector">
-                    <option value="eur">€ EUR</option>
-                    <option value="usd">$ USD</option>
-                </select>
-            </div>
-        </div>
-    </div>
-    
-    <!-- Header Principal -->
-    <header class="main-header">
-        <div class="container">
-            <div class="header-grid">
-                <!-- Logo -->
-                <a href="index.html" class="brand-logo">
-                    <img src="assets/images/logo-oriental-aura.svg" alt="Oriental Aura" width="180" height="60">
+            <div class="header-content">
+                <a href="index.html" class="logo">
+                    <img src="https://via.placeholder.com/50x50.png?text=OA" alt="Oriental Aura"> Oriental Aura
                 </a>
                 
-                <!-- Navigation Principale -->
-                <nav class="main-nav" aria-label="Navigation principale">
+                <nav>
                     <ul>
-                        <li><a href="nouveautes.html">Nouveautés</a></li>
-                        <li class="dropdown">
-                            <a href="produits.html">Produits <i class="fas fa-chevron-down"></i></a>
-                            <div class="dropdown-menu">
-                                <div class="dropdown-container">
-                                    <div class="dropdown-column">
-                                        <h4>Soins Visage</h4>
-                                        <ul>
-                                            <li><a href="soins-visage.html">Huile d'Argan</a></li>
-                                            <li><a href="soins-visage.html">Eau de Rose</a></li>
-                                            <li><a href="soins-visage.html">Masques Argile</a></li>
-                                        </ul>
-                                    </div>
-                                    <div class="dropdown-column">
-                                        <h4>Maquillage</h4>
-                                        <ul>
-                                            <li><a href="maquillage.html">Khôl Traditionnel</a></li>
-                                            <li><a href="maquillage.html">Rouges à Lèvres</a></li>
-                                            <li><a href="maquillage.html">Palettes Orientales</a></li>
-                                        </ul>
-                                    </div>
-                                    <div class="dropdown-column">
-                                        <h4>Soins Corps</h4>
-                                        <ul>
-                                            <li><a href="soins-corps.html">Savon Noir</a></li>
-                                            <li><a href="soins-corps.html">Gommage au Ghassoul</a></li>
-                                            <li><a href="soins-corps.html">Huiles Massage</a></li>
-                                        </ul>
-                                    </div>
-                                    <div class="dropdown-image">
-                                        <img src="assets/images/nav-dropdown.jpg" alt="Produits Oriental Aura" loading="lazy">
-                                    </div>
-                                </div>
-                            </div>
-                        </li>
-                        <li><a href="rituels.html">Rituels</a></li>
+                        <li><a href="index.html">Accueil</a></li>
+                        <li><a href="produits.html">Produits</a></li>
+                        <li><a href="soins.html">Soins</a></li>
                         <li><a href="histoire.html">Notre Histoire</a></li>
+                        <li><a href="contact.html">Contact</a></li>
                     </ul>
                 </nav>
-                
-                <!-- Actions Utilisateur -->
-                <div class="user-actions">
-                    <button class="search-btn" aria-label="Recherche">
-                        <i class="fas fa-search"></i>
-                    </button>
-                    <a href="compte.html" class="account-btn" aria-label="Mon compte">
-                        <i class="fas fa-user"></i>
-                    </a>
-                    <div class="cart-btn" aria-label="Panier">
-                        <i class="fas fa-shopping-bag"></i>
-                        <span class="cart-count">0</span>
-                    </div>
-                    <button class="mobile-menu-btn" aria-label="Menu mobile">
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                    </button>
-                </div>
             </div>
         </div>
     </header>
-    
-    <!-- Hero Section Luxe -->
-    <section class="hero-banner">
-        <div class="hero-slide active">
-            <div class="hero-media">
-                <picture>
-                    <source media="(max-width: 768px)" srcset="assets/images/hero-mobile.jpg">
-                    <source media="(min-width: 769px)" srcset="assets/images/hero-desktop.jpg">
-                    <img src="assets/images/hero-desktop.jpg" alt="Collection Signature Oriental Aura" loading="eager">
-                </picture>
-            </div>
-            <div class="hero-content">
-                <div class="container">
-                    <span class="hero-subtitle">Collection Signature</span>
-                    <h1 class="hero-title">L'Éclat du Maroc</h1>
-                    <p class="hero-text">Découvrez notre nouvelle gamme de soins enrichis en huile d'argan biologique</p>
-                    <div class="hero-cta">
-                        <a href="collection.html" class="btn btn-primary">Découvrir</a>
-                        <a href="video.html" class="btn btn-video">
-                            <i class="fas fa-play"></i> Voir le film
-                        </a>
-                    </div>
-                </div>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Beauté Traditionnelle Marocaine</h1>
+            <p>Découvrez l'authenticité des soins naturels hérités des savoir-faire ancestraux</p>
+            <div>
+                <a href="produits.html" class="btn">Nos Produits</a>
+                <a href="histoire.html" class="btn">Notre Histoire</a>
             </div>
         </div>
     </section>
-    
-    <!-- Section Marque -->
-    <section class="brand-section">
+
+    <!-- Produits -->
+    <section class="products-section">
         <div class="container">
-            <div class="brand-grid">
-                <div class="brand-content">
-                    <span class="section-subtitle">Savoir-Faire</span>
-                    <h2 class="section-title">L'Art de la Beauté Marocaine</h2>
-                    <p>Depuis 2015, Oriental Aura perpétue les traditions cosmétiques marocaines en les associant à l'excellence scientifique moderne. Chaque produit est conçu à Casablanca par nos maîtres artisans selon des méthodes ancestrales.</p>
-                    <div class="signature">
-                        <img src="assets/images/signature.png" alt="Signature Yasmina MH" width="120">
-                        <span>Yasmina MH, Fondatrice</span>
-                    </div>
-                </div>
-                <div class="brand-image">
-                    <div class="image-container">
-                        <img src="assets/images/brand-image.jpg" alt="Atelier Oriental Aura" loading="lazy">
-                        <div class="award-badge">
-                            <i class="fas fa-award"></i>
-                            <span>Prix d'Excellence 2023</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    
-    <!-- Collection Produits -->
-    <section class="product-collection">
-        <div class="container">
-            <div class="section-header">
-                <span class="section-subtitle">Nos Créations</span>
-                <h2 class="section-title">Collections Phares</h2>
-                <a href="boutique.html" class="view-all">Tout voir</a>
-            </div>
+            <h2 class="section-title">Nos Produits Phares</h2>
             
-            <div class="collection-grid">
+            <div class="products-grid">
                 <!-- Produit 1 -->
-                <article class="product-card">
-                    <div class="product-badge">Best-seller</div>
-                    <a href="produit.html" class="product-image">
-                        <img src="assets/images/product-1.jpg" alt="Khôl Imperial" loading="lazy">
-                        <div class="quick-view">Voir produit</div>
-                    </a>
-                    <div class="product-details">
-                        <h3><a href="produit.html">Khôl Impérial</a></h3>
-                        <div class="product-meta">
-                            <span class="price">29,00 €</span>
-                            <div class="rating">
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star-half-alt"></i>
-                                <span>(42)</span>
-                            </div>
-                        </div>
-                        <button class="btn-add-to-cart" data-product-id="101">
-                            <i class="fas fa-shopping-bag"></i> Ajouter
-                        </button>
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="https://images.unsplash.com/photo-1571781926291-c477ebfd024b?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Khôl Traditionnel">
                     </div>
-                </article>
+                    <div class="product-info">
+                        <h3>Khôl Traditionnel</h3>
+                        <div class="product-price">25,00 €</div>
+                        <a href="#" class="btn">Ajouter au panier</a>
+                    </div>
+                </div>
                 
                 <!-- Produit 2 -->
-                <article class="product-card">
-                    <div class="product-badge">Nouveau</div>
-                    <a href="produit.html" class="product-image">
-                        <img src="assets/images/product-2.jpg" alt="Huile d'Argan Lumière" loading="lazy">
-                        <div class="quick-view">Voir produit</div>
-                    </a>
-                    <div class="product-details">
-                        <h3><a href="produit.html">Huile d'Argan Lumière</a></h3>
-                        <div class="product-meta">
-                            <span class="price">49,00 €</span>
-                            <div class="rating">
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <span>(128)</span>
-                            </div>
-                        </div>
-                        <button class="btn-add-to-cart" data-product-id="102">
-                            <i class="fas fa-shopping-bag"></i> Ajouter
-                        </button>
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="https://images.unsplash.com/photo-1596755094514-f87e34085b2c?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Huile d'Argan">
                     </div>
-                </article>
+                    <div class="product-info">
+                        <h3>Huile d'Argan Bio</h3>
+                        <div class="product-price">32,00 €</div>
+                        <a href="#" class="btn">Ajouter au panier</a>
+                    </div>
+                </div>
                 
                 <!-- Produit 3 -->
-                <article class="product-card">
-                    <a href="produit.html" class="product-image">
-                        <img src="assets/images/product-3.jpg" alt="Savon Noir Purifiant" loading="lazy">
-                        <div class="quick-view">Voir produit</div>
-                    </a>
-                    <div class="product-details">
-                        <h3><a href="produit.html">Savon Noir Purifiant</a></h3>
-                        <div class="product-meta">
-                            <span class="price">24,00 €</span>
-                            <div class="rating">
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="far fa-star"></i>
-                                <span>(76)</span>
-                            </div>
-                        </div>
-                        <button class="btn-add-to-cart" data-product-id="103">
-                            <i class="fas fa-shopping-bag"></i> Ajouter
-                        </button>
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="https://images.unsplash.com/photo-1595341595379-cf0f2a7ab4a3?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Savon Noir">
                     </div>
-                </article>
+                    <div class="product-info">
+                        <h3>Savon Noir Traditionnel</h3>
+                        <div class="product-price">18,00 €</div>
+                        <a href="#" class="btn">Ajouter au panier</a>
+                    </div>
+                </div>
                 
                 <!-- Produit 4 -->
-                <article class="product-card">
-                    <div class="product-badge">Limited</div>
-                    <a href="produit.html" class="product-image">
-                        <img src="assets/images/product-4.jpg" alt="Palette Sultane" loading="lazy">
-                        <div class="quick-view">Voir produit</div>
-                    </a>
-                    <div class="product-details">
-                        <h3><a href="produit.html">Palette Sultane</a></h3>
-                        <div class="product-meta">
-                            <span class="price">65,00 €</span>
-                            <div class="rating">
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star-half-alt"></i>
-                                <span>(31)</span>
-                            </div>
-                        </div>
-                        <button class="btn-add-to-cart" data-product-id="104">
-                            <i class="fas fa-shopping-bag"></i> Ajouter
-                        </button>
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="https://images.unsplash.com/photo-1625772452859-1c03d5bf1137?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Rouge à Lèvres">
                     </div>
-                </article>
-            </div>
-        </div>
-    </section>
-    
-    <!-- Section Valeurs -->
-    <section class="values-section">
-        <div class="container">
-            <div class="values-grid">
-                <div class="value-card">
-                    <div class="value-icon">
-                        <i class="fas fa-leaf"></i>
+                    <div class="product-info">
+                        <h3>Rouge à Lèvres Naturel</h3>
+                        <div class="product-price">28,00 €</div>
+                        <a href="#" class="btn">Ajouter au panier</a>
                     </div>
-                    <h3>100% Naturel</h3>
-                    <p>Des ingrédients naturels et biologiques sourcés au Maroc</p>
-                </div>
-                
-                <div class="value-card">
-                    <div class="value-icon">
-                        <i class="fas fa-hand-holding-heart"></i>
-                    </div>
-                    <h3>Artisanal</h3>
-                    <p>Fabriqué à la main selon des méthodes traditionnelles</p>
-                </div>
-                
-                <div class="value-card">
-                    <div class="value-icon">
-                        <i class="fas fa-certificate"></i>
-                    </div>
-                    <h3>Certifié Bio</h3>
-                    <p>Certifications Ecocert et Cosmébio pour nos produits phares</p>
-                </div>
-                
-                <div class="value-card">
-                    <div class="value-icon">
-                        <i class="fas fa-recycle"></i>
-                    </div>
-                    <h3>Éco-responsable</h3>
-                    <p>Emballages recyclables et programmes de reprise</p>
                 </div>
             </div>
         </div>
     </section>
-    
-    <!-- Section Rituel -->
-    <section class="ritual-section">
-        <div class="container">
-            <div class="ritual-grid">
-                <div class="ritual-media">
-                    <div class="media-container">
-                        <img src="assets/images/ritual-image.jpg" alt="Rituel Hammam" loading="lazy">
-                        <button class="play-btn" aria-label="Voir le rituel">
-                            <i class="fas fa-play"></i>
-                        </button>
-                    </div>
-                </div>
-                <div class="ritual-content">
-                    <span class="section-subtitle">L'Expérience</span>
-                    <h2 class="section-title">Rituel Hammam Complet</h2>
-                    <p>Découvrez notre routine de soins inspirée des traditions marocaines pour une peau radieuse et purifiée. Ce rituel en 3 étapes associe nos meilleurs produits pour une expérience sensorielle unique.</p>
-                    <ol class="ritual-steps">
-                        <li>
-                            <strong>Nettoyage</strong> avec le Savon Noir enrichi en huile d'olive
-                        </li>
-                        <li>
-                            <strong>Exfoliation</strong> au gommage Ghassoul et rose
-                        </li>
-                        <li>
-                            <strong>Nutrition</strong> à l'Huile d'Argan biologique
-                        </li>
-                    </ol>
-                    <a href="rituel.html" class="btn btn-outline">Découvrir le rituel</a>
-                </div>
-            </div>
-        </div>
-    </section>
-    
-    <!-- Section Instagram -->
-    <section class="instagram-section">
-        <div class="container">
-            <div class="section-header">
-                <h2 class="section-title">Suivez-nous <span>@oriental_aura</span></h2>
-                <p>Rejoignez notre communauté et partagez vos moments Oriental Aura</p>
-            </div>
+
+    <script>
+        // Simple script pour le menu mobile
+        document.addEventListener('DOMContentLoaded', function() {
+            // Animation pour les produits au scroll
+            const animateOnScroll = function() {
+                const products = document.querySelectorAll('.product-card');
+                
+                products.forEach(product => {
+                    const productPosition = product.getBoundingClientRect().top;
+                    const screenPosition = window.innerHeight / 1.3;
+                    
+                    if (productPosition < screenPosition) {
+                        product.style.opacity = '1';
+                        product.style.transform = 'translateY(0)';
+                    }
+                });
+            };
             
-            <div class="instagram-feed">
-                <!-- Les images seraient chargées via JS depuis l'API Instagram -->
-                <a href="#" class="insta-post">
-                    <img src="assets/images/insta-1.jpg" alt="Post Instagram" loading="lazy">
-                    <div class="insta-overlay">
-                        <i class="fab fa-instagram"></i>
-                    </div>
-                </a>
-                <a href="#" class="insta-post">
-                    <img src="assets/images/insta-2.jpg" alt="Post Instagram" loading="lazy">
-                    <div class="insta-overlay">
-                        <i class="fab fa-instagram"></i>
-                    </div>
-                </a>
-                <a href="#" class="insta-post">
-                    <img src="assets/images/insta-3.jpg" alt="Post Instagram" loading="lazy">
-                    <div class="insta-overlay">
-                        <i class="fab fa-instagram"></i>
-                    </div>
-                </a>
-                <a href="#" class="insta-post">
-                    <img src="assets/images/insta-4.jpg" alt="Post Instagram" loading="lazy">
-                    <div class="insta-overlay">
-                        <i class="fab fa-instagram"></i>
-                    </div>
-                </a>
-            </div>
-        </div>
-    </section>
-    
-    <!-- Newsletter Luxe -->
-    <section class="newsletter-luxe">
-        <div class="container">
-            <div class="newsletter-container">
-                <div class="newsletter-content">
-                    <h2>L'Essentiel d'Oriental Aura</h2>
-                    <p>Abonnez-vous à notre newsletter pour recevoir en exclusivité nos nouveautés, conseils beauté et offres spéciales.</p>
-                </div>
-                <form class="newsletter-form">
-                    <div class="form-group">
-                        <input type="email" placeholder="Votre adresse email" required>
-                        <button type="submit" class="btn btn-primary">S'abonner</button>
-                    </div>
-                    <div class="form-checkbox">
-                        <input type="checkbox" id="newsletter-consent" required>
-                        <label for="newsletter-consent">J'accepte de recevoir des communications par email</label>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </section>
-    
-    <!-- Footer Principal -->
-    <footer class="main-footer">
-        <div class="container">
-            <div class="footer-grid">
-                <!-- Colonne 1 -->
-                <div class="footer-col">
-                    <h3 class="footer-title">Oriental Aura</h3>
-                    <p>Votre destination premium pour la beauté marocaine traditionnelle et moderne.</p>
-                    <div class="footer-payment">
-                        <img src="assets/images/payment-methods.png" alt="Méthodes de paiement" loading="lazy">
-                    </div>
-                </div>
-                
-                <!-- Colonne 2 -->
-                <div class="footer-col">
-                    <h3 class="footer-title">Boutique</h3>
-                    <ul>
-                        <li><a href="nouveautes.html">Nouveautés</a></li>
-                        <li><a href="soins-visage.html">Soins Visage</a></li>
-                        <li><a href="maquillage.html">Maquillage</a></li>
-                        <li><a href="soins-corps.html">Soins Corps</a></li>
-                        <li><a href="accessoires.html">Accessoires</a></li>
-                    </ul>
-                </div>
-                
-                <!-- Colonne 3 -->
-                <div class="footer-col">
-                    <h3 class="footer-title">Informations</h3>
-                    <ul>
-                        <li><a href="a-propos.html">Notre Histoire</a></li>
-                        <li><a href="boutiques.html">Nos Boutiques</a></li>
-                        <li><a href="blog.html">Blog Beauté</a></li>
-                        <li><a href="carrieres.html">Carrières</a></li>
-                        <li><a href="presse.html">Presse</a></li>
-                    </ul>
-                </div>
-                
-                <!-- Colonne 4 -->
-                <div class="footer-col">
-                    <h3 class="footer-title">Aide</h3>
-                    <ul>
-                        <li><a href="contact.html">Contact</a></li>
-                        <li><a href="livraison.html">Livraison & Retours</a></li>
-                        <li><a href="faq.html">FAQ</a></li>
-                        <li><a href="cgv.html">Conditions Générales</a></li>
-                        <li><a href="confidentialite.html">Confidentialité</a></li>
-                    </ul>
-                </div>
-                
-                <!-- Colonne 5 -->
-                <div class="footer-col">
-                    <h3 class="footer-title">Contact</h3>
-                    <address>
-                        <p><i class="fas fa-map-marker-alt"></i>, Maroc</p>
-                        <p><i class="fas fa-phone"></i> +212 522 123 456</p>
-                        <p><i class="fas fa-envelope"></i> contact@orientalaura.com</p>
-                    </address>
-                    <div class="footer-social">
-                        <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-                        <a href="#" aria-label="Pinterest"><i class="fab fa-pinterest-p"></i></a>
-                        <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
-                    </div>
-                </div>
-            </div>
+            // Initial state
+            const products = document.querySelectorAll('.product-card');
+            products.forEach(product => {
+                product.style.opacity = '0';
+                product.style.transform = 'translateY(20px)';
+                product.style.transition = 'all 0.6s ease';
+            });
             
-            <div class="footer-bottom">
-                <div class="footer-legal">
-                    <p>&copy; 2025 Oriental Aura. Tous droits réservés.</p>
-                    <div class="legal-links">
-                        <a href="mentions-legales.html">Mentions Légales</a>
-                        <a href="cookies.html">Politique Cookies</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </footer>
-    
-    <!-- Scripts -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/js/all.min.js"></script>
-    <script src="js/main.js" defer></script>
-    <script src="js/animations.js" defer></script>
+            window.addEventListener('scroll', animateOnScroll);
+            animateOnScroll();
+        });
+    </script>
 </body>
 </html>
