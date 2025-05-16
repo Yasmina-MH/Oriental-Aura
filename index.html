@@ -1,771 +1,87 @@
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Zahra Beauty - Artisanat Cosmétique Marocain</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
-    <style>
-        :root {
-            --marron: #7a4a24;
-            --beige: #f8f3e9;
-            --doré: #c9a769;
-            --blanc: #ffffff;
-            --noir: #2a2a2a;
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Montserrat', sans-serif;
-            background-color: var(--beige);
-            color: var(--noir);
-            line-height: 1.6;
-        }
-
-        h1, h2, h3 {
-            font-family: 'Playfair Display', serif;
-            font-weight: 700;
-        }
-
-        /* Header */
-        header {
-            background: var(--blanc);
-            box-shadow: 0 2px 15px rgba(0,0,0,0.08);
-            position: fixed;
-            width: 100%;
-            z-index: 1000;
-            padding: 15px 0;
-            transition: all 0.3s;
-        }
-
-        .container {
-            width: 90%;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .header-content {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .logo {
-            font-size: 24px;
-            font-weight: 700;
-            color: var(--marron);
-            text-decoration: none;
-            display: flex;
-            align-items: center;
-        }
-
-        .logo img {
-            height: 40px;
-            margin-right: 10px;
-        }
-
-        /* Navigation */
-        nav ul {
-            display: flex;
-            list-style: none;
-        }
-
-        nav ul li {
-            margin-left: 30px;
-            position: relative;
-        }
-
-        nav ul li a {
-            text-decoration: none;
-            color: var(--noir);
-            font-weight: 500;
-            transition: all 0.3s;
-            padding: 5px 0;
-            font-size: 15px;
-        }
-
-        nav ul li a:hover {
-            color: var(--marron);
-        }
-
-        nav ul li a::after {
-            content: '';
-            position: absolute;
-            width: 0;
-            height: 2px;
-            background: var(--marron);
-            bottom: 0;
-            left: 0;
-            transition: width 0.3s;
-        }
-
-        nav ul li a:hover::after {
-            width: 100%;
-        }
-
-        .header-actions {
-            display: flex;
-            align-items: center;
-        }
-
-        .header-actions a {
-            margin-left: 20px;
-            color: var(--noir);
-            font-size: 18px;
-            transition: all 0.3s;
-        }
-
-        .header-actions a:hover {
-            color: var(--marron);
-        }
-
-        .mobile-menu-btn {
-            display: none;
-            background: none;
-            border: none;
-            font-size: 24px;
-            color: var(--noir);
-            cursor: pointer;
-        }
-
-        /* Hero Section */
-        .hero {
-            background: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.2)), 
-                        url('https://images.unsplash.com/photo-1551232864-3f0890e580d9?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
-            background-size: cover;
-            background-position: center;
-            height: 90vh;
-            display: flex;
-            align-items: center;
-            padding-top: 80px;
-            color: var(--blanc);
-            text-align: center;
-        }
-
-        .hero-content {
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-
-        .hero h1 {
-            font-size: 48px;
-            margin-bottom: 20px;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
-            line-height: 1.2;
-        }
-
-        .hero p {
-            font-size: 20px;
-            margin-bottom: 30px;
-            text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
-        }
-
-        .btn {
-            display: inline-block;
-            padding: 12px 30px;
-            background: var(--marron);
-            color: var(--blanc);
-            text-decoration: none;
-            border-radius: 30px;
-            font-weight: 600;
-            transition: all 0.3s;
-            margin: 0 10px;
-            border: 2px solid var(--marron);
-            font-size: 15px;
-        }
-
-        .btn:hover {
-            background: transparent;
-            color: var(--blanc);
-            border-color: var(--blanc);
-            transform: translateY(-3px);
-        }
-
-        /* Produits */
-        .products-section {
-            padding: 100px 0;
-        }
-
-        .section-title {
-            text-align: center;
-            margin-bottom: 50px;
-            font-size: 36px;
-            color: var(--marron);
-            position: relative;
-        }
-
-        .section-title::after {
-            content: '';
-            display: block;
-            width: 80px;
-            height: 3px;
-            background: var(--marron);
-            margin: 15px auto;
-        }
-
-        .products-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-            gap: 30px;
-        }
-
-        .product-card {
-            background: var(--blanc);
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
-            transition: all 0.3s;
-            position: relative;
-        }
-
-        .product-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 30px rgba(0,0,0,0.15);
-        }
-
-        .product-badge {
-            position: absolute;
-            top: 15px;
-            right: 15px;
-            background: var(--doré);
-            color: var(--blanc);
-            padding: 5px 15px;
-            border-radius: 20px;
-            font-size: 12px;
-            font-weight: 600;
-            z-index: 2;
-        }
-
-        .product-image {
-            height: 300px;
-            overflow: hidden;
-        }
-
-        .product-image img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.5s;
-        }
-
-        .product-card:hover .product-image img {
-            transform: scale(1.05);
-        }
-
-        .product-info {
-            padding: 20px;
-            text-align: center;
-        }
-
-        .product-info h3 {
-            margin-bottom: 10px;
-            font-size: 20px;
-            color: var(--marron);
-        }
-
-        .product-price {
-            color: var(--noir);
-            font-weight: 700;
-            font-size: 18px;
-            margin-bottom: 15px;
-        }
-
-        .product-price span {
-            color: var(--doré);
-            font-size: 22px;
-        }
-
-        /* Valeurs */
-        .values-section {
-            padding: 80px 0;
-            background: var(--blanc);
-        }
-
-        .values-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 30px;
-            text-align: center;
-        }
-
-        .value-card {
-            padding: 30px 20px;
-        }
-
-        .value-icon {
-            font-size: 40px;
-            color: var(--doré);
-            margin-bottom: 20px;
-        }
-
-        .value-card h3 {
-            margin-bottom: 15px;
-            color: var(--marron);
-        }
-
-        /* Newsletter */
-        .newsletter {
-            padding: 80px 0;
-            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), 
-                        url('https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
-            background-size: cover;
-            background-position: center;
-            color: var(--blanc);
-            text-align: center;
-        }
-
-        .newsletter h2 {
-            font-size: 32px;
-            margin-bottom: 20px;
-        }
-
-        .newsletter p {
-            max-width: 600px;
-            margin: 0 auto 30px;
-            font-size: 18px;
-        }
-
-        .newsletter-form {
-            display: flex;
-            max-width: 500px;
-            margin: 0 auto;
-        }
-
-        .newsletter-form input {
-            flex: 1;
-            padding: 15px;
-            border: none;
-            border-radius: 30px 0 0 30px;
-            font-size: 16px;
-        }
-
-        .newsletter-form button {
-            padding: 15px 30px;
-            background: var(--doré);
-            color: var(--blanc);
-            border: none;
-            border-radius: 0 30px 30px 0;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s;
-        }
-
-        .newsletter-form button:hover {
-            background: var(--marron);
-        }
-
-        /* Footer */
-        footer {
-            background: var(--noir);
-            color: var(--blanc);
-            padding: 60px 0 30px;
-        }
-
-        .footer-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 40px;
-            margin-bottom: 40px;
-        }
-
-        .footer-col h3 {
-            color: var(--doré);
-            margin-bottom: 20px;
-            font-size: 20px;
-        }
-
-        .footer-col ul {
-            list-style: none;
-        }
-
-        .footer-col ul li {
-            margin-bottom: 10px;
-        }
-
-        .footer-col ul li a {
-            color: #ccc;
-            text-decoration: none;
-            transition: all 0.3s;
-        }
-
-        .footer-col ul li a:hover {
-            color: var(--doré);
-            padding-left: 5px;
-        }
-
-        .social-links {
-            display: flex;
-            gap: 15px;
-            margin-top: 20px;
-        }
-
-        .social-links a {
-            color: var(--blanc);
-            font-size: 20px;
-            transition: all 0.3s;
-        }
-
-        .social-links a:hover {
-            color: var(--doré);
-            transform: translateY(-3px);
-        }
-
-        .footer-bottom {
-            text-align: center;
-            padding-top: 30px;
-            border-top: 1px solid #444;
-            color: #aaa;
-            font-size: 14px;
-        }
-
-        /* Responsive */
-        @media (max-width: 992px) {
-            .hero h1 {
-                font-size: 42px;
-            }
-            
-            .section-title {
-                font-size: 32px;
-            }
-        }
-
-        @media (max-width: 768px) {
-            nav {
-                display: none;
-                position: fixed;
-                top: 80px;
-                left: 0;
-                width: 100%;
-                background: var(--blanc);
-                padding: 20px;
-                box-shadow: 0 5px 10px rgba(0,0,0,0.1);
-            }
-            
-            nav.active {
-                display: block;
-            }
-            
-            nav ul {
-                flex-direction: column;
-            }
-            
-            nav ul li {
-                margin: 0 0 15px 0;
-            }
-            
-            .mobile-menu-btn {
-                display: block;
-            }
-            
-            .header-actions a:not(.mobile-menu-btn) {
-                display: none;
-            }
-            
-            .hero {
-                height: 80vh;
-            }
-            
-            .hero h1 {
-                font-size: 36px;
-            }
-            
-            .hero p {
-                font-size: 18px;
-            }
-            
-            .newsletter-form {
-                flex-direction: column;
-            }
-            
-            .newsletter-form input,
-            .newsletter-form button {
-                border-radius: 30px;
-                width: 100%;
-            }
-            
-            .newsletter-form input {
-                margin-bottom: 10px;
-            }
-        }
-
-        @media (max-width: 576px) {
-            .hero h1 {
-                font-size: 32px;
-            }
-            
-            .btn {
-                display: block;
-                margin: 10px auto;
-                max-width: 200px;
-            }
-            
-            .products-grid {
-                grid-template-columns: 1fr;
-            }
-        }
-    </style>
+    <title>Natus Marrakech</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="scripts.js" defer></script>
 </head>
+
 <body>
-    <!-- Header -->
+
+    <!-- En-tête avec navigation -->
     <header>
-        <div class="container">
-            <div class="header-content">
-                <a href="index.html" class="logo">
-                    <img src="https://via.placeholder.com/40x40.png?text=ZB" alt="Zahra Beauty"> Zahra Beauty
-                </a>
-                
-                <nav id="mainNav">
-                    <ul>
-                        <li><a href="index.html">Accueil</a></li>
-                        <li><a href="produits.html">Nos Créations</a></li>
-                        <li><a href="savoirs.html">Savoir-Faire</a></li>
-                        <li><a href="histoire.html">Notre Histoire</a></li>
-                        <li><a href="contact.html">Contact</a></li>
-                    </ul>
-                </nav>
-                
-                <div class="header-actions">
-                    <a href="#"><i class="fas fa-search"></i></a>
-                    <a href="#"><i class="fas fa-user"></i></a>
-                    <a href="#"><i class="fas fa-shopping-bag"></i></a>
-                    <button class="mobile-menu-btn" id="mobileMenuBtn">
-                        <i class="fas fa-bars"></i>
-                    </button>
-                </div>
-            </div>
+        <div class="logo">
+            <img src="https://via.placeholder.com/150x50?text=Logo" alt="Logo Natus Marrakech">
         </div>
+        <nav>
+            <ul>
+                <li><a href="#">Accueil</a></li>
+                <li><a href="#">À propos</a></li>
+                <li><a href="#">Nos Services</a></li>
+                <li><a href="#">Galerie</a></li>
+                <li><a href="#">Contact</a></li>
+            </ul>
+        </nav>
     </header>
 
-    <!-- Hero Section -->
+    <!-- Section d'accueil avec image de fond -->
     <section class="hero">
-        <div class="hero-content">
-            <h1>L'Art de la Beauté Marocaine</h1>
-            <p>Découvrez des cosmétiques artisanaux élaborés selon des traditions séculaires</p>
-            <div>
-                <a href="produits.html" class="btn">Nos Créations</a>
-                <a href="savoirs.html" class="btn">Notre Savoir-Faire</a>
+        <div class="overlay">
+            <h1>Bienvenue chez Natus Marrakech</h1>
+            <p>Découvrez l'authenticité et l'élégance du Maroc</p>
+        </div>
+    </section>
+
+    <!-- Section services -->
+    <section class="services">
+        <h2>Nos Services</h2>
+        <div class="service-cards">
+            <div class="service-card">
+                <img src="https://via.placeholder.com/400x300?text=Service+1" alt="Service 1">
+                <h3>Hébergement de Luxe</h3>
+                <p>Profitez d'un confort inégalé et d'une vue imprenable sur Marrakech.</p>
+            </div>
+            <div class="service-card">
+                <img src="https://via.placeholder.com/400x300?text=Service+2" alt="Service 2">
+                <h3>Spas et Bien-être</h3>
+                <p>Offrez-vous un moment de détente absolue avec nos soins de qualité.</p>
+            </div>
+            <div class="service-card">
+                <img src="https://via.placeholder.com/400x300?text=Service+3" alt="Service 3">
+                <h3>Excursions</h3>
+                <p>Partez à la découverte des merveilles du désert et des montagnes.</p>
             </div>
         </div>
     </section>
 
-    <!-- Produits -->
-    <section class="products-section">
-        <div class="container">
-            <h2 class="section-title">Nos Élixirs</h2>
-            
-            <div class="products-grid">
-                <!-- Produit 1 -->
-                <div class="product-card">
-                    <div class="product-badge">Best-seller</div>
-                    <div class="product-image">
-                        <img src="https://images.unsplash.com/photo-1596755094514-f87e34085b2c?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Huile d'Argan">
-                    </div>
-                    <div class="product-info">
-                        <h3>Huile d'Argan Lumière</h3>
-                        <div class="product-price"><span>49,00</span> €</div>
-                        <a href="#" class="btn">Ajouter au panier</a>
-                    </div>
-                </div>
-                
-                <!-- Produit 2 -->
-                <div class="product-card">
-                    <div class="product-badge">Nouveauté</div>
-                    <div class="product-image">
-                        <img src="https://images.unsplash.com/photo-1625772452859-1c03d5bf1137?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Rouge à Lèvres">
-                    </div>
-                    <div class="product-info">
-                        <h3>Rouge à Lèvres Sultane</h3>
-                        <div class="product-price"><span>32,00</span> €</div>
-                        <a href="#" class="btn">Ajouter au panier</a>
-                    </div>
-                </div>
-                
-                <!-- Produit 3 -->
-                <div class="product-card">
-                    <div class="product-image">
-                        <img src="https://images.unsplash.com/photo-1571781926291-c477ebfd024b?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Khôl">
-                    </div>
-                    <div class="product-info">
-                        <h3>Khôl Impérial</h3>
-                        <div class="product-price"><span>29,00</span> €</div>
-                        <a href="#" class="btn">Ajouter au panier</a>
-                    </div>
-                </div>
-                
-                <!-- Produit 4 -->
-                <div class="product-card">
-                    <div class="product-badge">Limited</div>
-                    <div class="product-image">
-                        <img src="https://images.unsplash.com/photo-1595341595379-cf0f2a7ab4a3?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Savon Noir">
-                    </div>
-                    <div class="product-info">
-                        <h3>Savon Noir Purifiant</h3>
-                        <div class="product-price"><span>24,00</span> €</div>
-                        <a href="#" class="btn">Ajouter au panier</a>
-                    </div>
-                </div>
-            </div>
-        </div>
+    <!-- Section à propos -->
+    <section class="about">
+        <h2>À propos</h2>
+        <p>Notre équipe vous invite à vivre une expérience marocaine authentique, alliant luxe et tradition.</p>
     </section>
 
-    <!-- Valeurs -->
-    <section class="values-section">
-        <div class="container">
-            <h2 class="section-title">Nos Engagements</h2>
-            
-            <div class="values-grid">
-                <div class="value-card">
-                    <div class="value-icon">
-                        <i class="fas fa-leaf"></i>
-                    </div>
-                    <h3>100% Naturel</h3>
-                    <p>Des ingrédients naturels sourcés au Maroc</p>
-                </div>
-                
-                <div class="value-card">
-                    <div class="value-icon">
-                        <i class="fas fa-hand-holding-heart"></i>
-                    </div>
-                    <h3>Artisanal</h3>
-                    <p>Fabriqué à la main selon des méthodes ancestrales</p>
-                </div>
-                
-                <div class="value-card">
-                    <div class="value-icon">
-                        <i class="fas fa-certificate"></i>
-                    </div>
-                    <h3>Certifié Bio</h3>
-                    <p>Produits certifiés Ecocert et Cosmébio</p>
-                </div>
-                
-                <div class="value-card">
-                    <div class="value-icon">
-                        <i class="fas fa-recycle"></i>
-                    </div>
-                    <h3>Éco-responsable</h3>
-                    <p>Emballages recyclables et programmes de reprise</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Newsletter -->
-    <section class="newsletter">
-        <div class="container">
-            <h2>Rejoignez Notre Univers</h2>
-            <p>Abonnez-vous à notre newsletter pour recevoir nos exclusivités et conseils beauté</p>
-            <form class="newsletter-form">
-                <input type="email" placeholder="Votre adresse email" required>
-                <button type="submit">S'abonner</button>
-            </form>
-        </div>
+    <!-- Section contact -->
+    <section class="contact">
+        <h2>Contactez-nous</h2>
+        <form action="#" method="POST">
+            <label for="name">Nom</label>
+            <input type="text" id="name" name="name" required>
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" required>
+            <label for="message">Message</label>
+            <textarea id="message" name="message" required></textarea>
+            <button type="submit">Envoyer</button>
+        </form>
     </section>
 
     <!-- Footer -->
     <footer>
-        <div class="container">
-            <div class="footer-grid">
-                <div class="footer-col">
-                    <h3>Zahra Beauty</h3>
-                    <p>L'excellence de la cosmétique marocaine traditionnelle.</p>
-                    <div class="social-links">
-                        <a href="#"><i class="fab fa-instagram"></i></a>
-                        <a href="#"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#"><i class="fab fa-pinterest-p"></i></a>
-                    </div>
-                </div>
-                
-                <div class="footer-col">
-                    <h3>Boutique</h3>
-                    <ul>
-                        <li><a href="#">Soins Visage</a></li>
-                        <li><a href="#">Maquillage</a></li>
-                        <li><a href="#">Soins Corps</a></li>
-                        <li><a href="#">Nouveautés</a></li>
-                    </ul>
-                </div>
-                
-                <div class="footer-col">
-                    <h3>Informations</h3>
-                    <ul>
-                        <li><a href="#">Livraison & Retours</a></li>
-                        <li><a href="#">Mentions Légales</a></li>
-                        <li><a href="#">Confidentialité</a></li>
-                        <li><a href="#">CGV</a></li>
-                    </ul>
-                </div>
-                
-                <div class="footer-col">
-                    <h3>Contact</h3>
-                    <ul>
-                        <li><i class="fas fa-map-marker-alt"></i> 12 Rue des Arganiers, Marrakech</li>
-                        <li><i class="fas fa-phone"></i> +212 6 12 34 56 78</li>
-                        <li><i class="fas fa-envelope"></i> contact@zahrabeauty.com</li>
-                    </ul>
-                </div>
-            </div>
-            
-            <div class="footer-bottom">
-                <p>&copy; 2023 Zahra Beauty. Tous droits réservés.</p>
-            </div>
-        </div>
+        <p>&copy; 2025 Natus Marrakech | Tous droits réservés</p>
     </footer>
 
-    <script>
-        // Menu Mobile
-        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
-        const mainNav = document.getElementById('mainNav');
-        
-        mobileMenuBtn.addEventListener('click', function() {
-            mainNav.classList.toggle('active');
-            this.querySelector('i').classList.toggle('fa-times');
-            this.querySelector('i').classList.toggle('fa-bars');
-        });
-        
-        // Animation au scroll
-        document.addEventListener('DOMContentLoaded', function() {
-            const productCards = document.querySelectorAll('.product-card');
-            
-            function animateOnScroll() {
-                productCards.forEach(card => {
-                    const cardPosition = card.getBoundingClientRect().top;
-                    const screenPosition = window.innerHeight / 1.2;
-                    
-                    if(cardPosition < screenPosition) {
-                        card.style.opacity = '1';
-                        card.style.transform = 'translateY(0)';
-                    }
-                });
-            }
-            
-            // Initial state
-            productCards.forEach(card => {
-                card.style.opacity = '0';
-                card.style.transform = 'translateY(20px)';
-                card.style.transition = 'all 0.6s ease';
-            });
-            
-            window.addEventListener('scroll', animateOnScroll);
-            animateOnScroll();
-            
-            // Header scroll effect
-            window.addEventListener('scroll', function() {
-                if(window.scrollY > 100) {
-                    document.querySelector('header').style.padding = '10px 0';
-                    document.querySelector('.logo img').style.height = '35px';
-                } else {
-                    document.querySelector('header').style.padding = '15px 0';
-                    document.querySelector('.logo img').style.height = '40px';
-                }
-            });
-        });
-    </script>
 </body>
+
 </html>
