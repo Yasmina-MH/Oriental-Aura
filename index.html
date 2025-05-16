@@ -1,87 +1,932 @@
 <!DOCTYPE html>
 <html lang="fr">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Natus Marrakech</title>
-    <link rel="stylesheet" href="style.css">
-    <script src="scripts.js" defer></script>
+    <title>Oriental Aura - L'Essence de la Beauté Marocaine</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #8B4513;       /* Marron oriental */
+            --secondary: #D2B48C;     /* Beige doré */
+            --accent: #C19A6B;        /* Or vieilli */
+            --light: #F8F5F2;         /* Fond clair */
+            --dark: #2A2A2A;          /* Texte */
+            --white: #FFFFFF;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            color: var(--dark);
+            background-color: var(--light);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+            line-height: 1.2;
+        }
+
+        /* Header Luxe */
+        .top-bar {
+            background-color: var(--dark);
+            color: var(--white);
+            font-size: 0.8rem;
+            padding: 0.6rem 0;
+            text-align: center;
+        }
+
+        .main-header {
+            position: sticky;
+            top: 0;
+            background-color: var(--white);
+            box-shadow: 0 2px 20px rgba(0,0,0,0.08);
+            z-index: 1000;
+            transition: all 0.4s;
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.2rem 0;
+            max-width: 1400px;
+            margin: 0 auto;
+            width: 90%;
+        }
+
+        .brand-logo img {
+            height: 60px;
+            transition: all 0.4s;
+        }
+
+        /* Navigation Premium */
+        .main-nav ul {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .main-nav a {
+            font-weight: 500;
+            color: var(--dark);
+            position: relative;
+            padding: 0.5rem 0;
+            font-size: 0.95rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .main-nav a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--primary);
+            transition: width 0.4s;
+        }
+
+        .main-nav a:hover::after {
+            width: 100%;
+        }
+
+        .header-actions {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+        }
+
+        .header-actions a {
+            color: var(--dark);
+            font-size: 1.1rem;
+            transition: all 0.3s;
+        }
+
+        .header-actions a:hover {
+            color: var(--primary);
+        }
+
+        /* Hero Section Luxe */
+        .hero-banner {
+            position: relative;
+            height: 90vh;
+            overflow: hidden;
+        }
+
+        .hero-slide {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background-size: cover;
+            background-position: center;
+            opacity: 0;
+            transition: opacity 1.5s ease;
+        }
+
+        .hero-slide.active {
+            opacity: 1;
+        }
+
+        .hero-content {
+            position: absolute;
+            bottom: 15%;
+            left: 10%;
+            max-width: 600px;
+            color: var(--white);
+            z-index: 2;
+        }
+
+        .hero-subtitle {
+            font-size: 1.2rem;
+            letter-spacing: 3px;
+            margin-bottom: 1rem;
+            color: var(--secondary);
+            display: block;
+        }
+
+        .hero-title {
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+            line-height: 1.1;
+            text-shadow: 2px 2px 8px rgba(0,0,0,0.3);
+        }
+
+        .hero-text {
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
+        }
+
+        /* Boutons Premium */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 1rem 2.2rem;
+            border-radius: 30px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 0.9rem;
+            transition: all 0.4s;
+            cursor: pointer;
+            text-decoration: none;
+        }
+
+        .btn-primary {
+            background-color: var(--primary);
+            color: var(--white);
+            border: 2px solid var(--primary);
+        }
+
+        .btn-primary:hover {
+            background-color: transparent;
+            color: var(--white);
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            color: var(--white);
+            border: 2px solid var(--white);
+        }
+
+        .btn-outline:hover {
+            background-color: var(--white);
+            color: var(--primary);
+        }
+
+        /* Collection Produits */
+        .collection-section {
+            padding: 6rem 0;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-subtitle {
+            font-size: 1rem;
+            letter-spacing: 3px;
+            color: var(--primary);
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            color: var(--dark);
+            margin-bottom: 1.5rem;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 3px;
+            background: var(--primary);
+            margin: 1.5rem auto;
+        }
+
+        .collection-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        /* Carte Produit Luxe */
+        .product-card {
+            position: relative;
+            background: var(--white);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+            transition: all 0.4s;
+        }
+
+        .product-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+        }
+
+        .product-badge {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: var(--primary);
+            color: var(--white);
+            padding: 0.3rem 1rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            z-index: 2;
+        }
+
+        .product-image {
+            height: 350px;
+            overflow: hidden;
+        }
+
+        .product-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.8s ease;
+        }
+
+        .product-card:hover .product-image img {
+            transform: scale(1.05);
+        }
+
+        .product-info {
+            padding: 1.5rem;
+            text-align: center;
+        }
+
+        .product-info h3 {
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+            color: var(--dark);
+        }
+
+        .product-price {
+            font-size: 1.2rem;
+            color: var(--primary);
+            font-weight: 700;
+            margin-bottom: 1.2rem;
+        }
+
+        /* Section Valeurs */
+        .values-section {
+            padding: 6rem 0;
+            background-color: var(--white);
+        }
+
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            text-align: center;
+        }
+
+        .value-card {
+            padding: 2rem 1.5rem;
+        }
+
+        .value-icon {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+        }
+
+        .value-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            color: var(--dark);
+        }
+
+        /* Section Rituel */
+        .ritual-section {
+            padding: 6rem 0;
+            background-color: var(--light);
+        }
+
+        .ritual-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .ritual-media {
+            position: relative;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
+
+        .ritual-media img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .play-btn {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 70px;
+            height: 70px;
+            background-color: rgba(255,255,255,0.9);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary);
+            font-size: 1.5rem;
+            cursor: pointer;
+            transition: all 0.3s;
+            border: none;
+        }
+
+        .play-btn:hover {
+            background-color: var(--primary);
+            color: var(--white);
+        }
+
+        .ritual-steps {
+            list-style: none;
+            margin: 2rem 0;
+        }
+
+        .ritual-steps li {
+            margin-bottom: 1.5rem;
+            padding-left: 2rem;
+            position: relative;
+            font-size: 1.1rem;
+        }
+
+        .ritual-steps li::before {
+            content: '•';
+            position: absolute;
+            left: 0;
+            color: var(--primary);
+            font-size: 1.5rem;
+        }
+
+        /* Newsletter Luxe */
+        .newsletter-luxe {
+            padding: 6rem 0;
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-position: center;
+            color: var(--white);
+            text-align: center;
+        }
+
+        .newsletter-container {
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .newsletter-content h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .newsletter-form {
+            display: flex;
+            margin-top: 2rem;
+        }
+
+        .newsletter-form input {
+            flex: 1;
+            padding: 1rem;
+            border: none;
+            border-radius: 30px 0 0 30px;
+            font-size: 1rem;
+        }
+
+        .newsletter-form button {
+            padding: 0 2.5rem;
+            background-color: var(--primary);
+            color: var(--white);
+            border: none;
+            border-radius: 0 30px 30px 0;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .newsletter-form button:hover {
+            background-color: var(--accent);
+        }
+
+        /* Footer Premium */
+        .main-footer {
+            background-color: var(--dark);
+            color: var(--white);
+            padding: 5rem 0 2rem;
+        }
+
+        .footer-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            width: 90%;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 3rem;
+            margin-bottom: 4rem;
+        }
+
+        .footer-col h3 {
+            color: var(--secondary);
+            font-size: 1.2rem;
+            margin-bottom: 1.5rem;
+            position: relative;
+            padding-bottom: 1rem;
+        }
+
+        .footer-col h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 2px;
+            background: var(--secondary);
+        }
+
+        .footer-col ul {
+            list-style: none;
+        }
+
+        .footer-col ul li {
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-col ul li a {
+            color: #ccc;
+            transition: all 0.3s;
+            font-size: 0.95rem;
+        }
+
+        .footer-col ul li a:hover {
+            color: var(--secondary);
+            padding-left: 5px;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+
+        .social-links a {
+            color: var(--white);
+            font-size: 1.2rem;
+            transition: all 0.3s;
+        }
+
+        .social-links a:hover {
+            color: var(--secondary);
+            transform: translateY(-3px);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid #444;
+            font-size: 0.9rem;
+            color: #999;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1200px) {
+            .hero-title {
+                font-size: 3rem;
+            }
+        }
+
+        @media (max-width: 992px) {
+            .ritual-container {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+            }
+            
+            .ritual-media {
+                order: -1;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .main-nav {
+                display: none;
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100vh;
+                background-color: var(--white);
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                z-index: 999;
+                opacity: 0;
+                transition: all 0.4s;
+            }
+            
+            .main-nav.active {
+                display: flex;
+                opacity: 1;
+            }
+            
+            .main-nav ul {
+                flex-direction: column;
+                gap: 2rem;
+                text-align: center;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+                background: none;
+                border: none;
+                font-size: 1.5rem;
+                color: var(--dark);
+                cursor: pointer;
+                z-index: 1000;
+            }
+            
+            .hero-content {
+                left: 5%;
+                bottom: 10%;
+            }
+            
+            .hero-title {
+                font-size: 2.5rem;
+            }
+            
+            .newsletter-form {
+                flex-direction: column;
+            }
+            
+            .newsletter-form input,
+            .newsletter-form button {
+                border-radius: 30px;
+                width: 100%;
+            }
+            
+            .newsletter-form input {
+                margin-bottom: 1rem;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .hero-title {
+                font-size: 2rem;
+            }
+            
+            .hero-text {
+                font-size: 1rem;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+        }
+    </style>
 </head>
-
 <body>
-
-    <!-- En-tête avec navigation -->
-    <header>
-        <div class="logo">
-            <img src="https://via.placeholder.com/150x50?text=Logo" alt="Logo Natus Marrakech">
+    <!-- Top Bar -->
+    <div class="top-bar">
+        <div class="container">
+            <p>Livraison offerte dès 500 MAD | Retours gratuits sous 14 jours</p>
         </div>
-        <nav>
-            <ul>
-                <li><a href="#">Accueil</a></li>
-                <li><a href="#">À propos</a></li>
-                <li><a href="#">Nos Services</a></li>
-                <li><a href="#">Galerie</a></li>
-                <li><a href="#">Contact</a></li>
-            </ul>
-        </nav>
+    </div>
+
+    <!-- Header -->
+    <header class="main-header">
+        <div class="header-container">
+            <a href="index.html" class="brand-logo">
+                <img src="https://via.placeholder.com/180x60.png?text=ORIENTAL+AURA" alt="Oriental Aura">
+            </a>
+            
+            <nav class="main-nav" id="mainNav">
+                <ul>
+                    <li><a href="index.html">Accueil</a></li>
+                    <li><a href="collections.html">Collections</a></li>
+                    <li><a href="rituels.html">Rituels</a></li>
+                    <li><a href="histoire.html">Notre Histoire</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </nav>
+            
+            <div class="header-actions">
+                <a href="#" aria-label="Recherche"><i class="fas fa-search"></i></a>
+                <a href="#" aria-label="Compte"><i class="fas fa-user"></i></a>
+                <a href="#" aria-label="Panier"><i class="fas fa-shopping-bag"></i></a>
+                <button class="mobile-menu-btn" id="mobileMenuBtn">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
     </header>
 
-    <!-- Section d'accueil avec image de fond -->
-    <section class="hero">
-        <div class="overlay">
-            <h1>Bienvenue chez Natus Marrakech</h1>
-            <p>Découvrez l'authenticité et l'élégance du Maroc</p>
-        </div>
-    </section>
-
-    <!-- Section services -->
-    <section class="services">
-        <h2>Nos Services</h2>
-        <div class="service-cards">
-            <div class="service-card">
-                <img src="https://via.placeholder.com/400x300?text=Service+1" alt="Service 1">
-                <h3>Hébergement de Luxe</h3>
-                <p>Profitez d'un confort inégalé et d'une vue imprenable sur Marrakech.</p>
-            </div>
-            <div class="service-card">
-                <img src="https://via.placeholder.com/400x300?text=Service+2" alt="Service 2">
-                <h3>Spas et Bien-être</h3>
-                <p>Offrez-vous un moment de détente absolue avec nos soins de qualité.</p>
-            </div>
-            <div class="service-card">
-                <img src="https://via.placeholder.com/400x300?text=Service+3" alt="Service 3">
-                <h3>Excursions</h3>
-                <p>Partez à la découverte des merveilles du désert et des montagnes.</p>
+    <!-- Hero Banner -->
+    <section class="hero-banner">
+        <div class="hero-slide active" style="background-image: url('https://images.unsplash.com/photo-1551232864-3f0890e580d9?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');">
+            <div class="hero-content">
+                <span class="hero-subtitle">Nouvelle Collection</span>
+                <h1 class="hero-title">L'Éclat du Maroc</h1>
+                <p class="hero-text">Découvrez notre gamme exclusive de soins à l'huile d'argan biologique enrichie en or</p>
+                <div class="hero-cta">
+                    <a href="collection.html" class="btn btn-primary">Découvrir</a>
+                    <a href="video.html" class="btn btn-outline">Voir le film</a>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- Section à propos -->
-    <section class="about">
-        <h2>À propos</h2>
-        <p>Notre équipe vous invite à vivre une expérience marocaine authentique, alliant luxe et tradition.</p>
+    <!-- Collection Produits -->
+    <section class="collection-section">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-subtitle">L'Artisanat</span>
+                <h2 class="section-title">Nos Créations Signature</h2>
+            </div>
+            
+            <div class="collection-grid">
+                <!-- Produit 1 -->
+                <div class="product-card">
+                    <div class="product-badge">Best-seller</div>
+                    <div class="product-image">
+                        <img src="https://images.unsplash.com/photo-1596755094514-f87e34085b2c?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Huile d'Argan Dorée">
+                    </div>
+                    <div class="product-info">
+                        <h3>Huile d'Argan Dorée</h3>
+                        <div class="product-price">490 MAD</div>
+                        <a href="#" class="btn btn-primary">Ajouter au panier</a>
+                    </div>
+                </div>
+                
+                <!-- Produit 2 -->
+                <div class="product-card">
+                    <div class="product-badge">Nouveauté</div>
+                    <div class="product-image">
+                        <img src="https://images.unsplash.com/photo-1571781926291-c477ebfd024b?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Khôl Impérial">
+                    </div>
+                    <div class="product-info">
+                        <h3>Khôl Impérial</h3>
+                        <div class="product-price">320 MAD</div>
+                        <a href="#" class="btn btn-primary">Ajouter au panier</a>
+                    </div>
+                </div>
+                
+                <!-- Produit 3 -->
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="https://images.unsplash.com/photo-1595341595379-cf0f2a7ab4a3?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Savon Noir Purifiant">
+                    </div>
+                    <div class="product-info">
+                        <h3>Savon Noir Purifiant</h3>
+                        <div class="product-price">240 MAD</div>
+                        <a href="#" class="btn btn-primary">Ajouter au panier</a>
+                    </div>
+                </div>
+            </div>
+        </div>
     </section>
 
-    <!-- Section contact -->
-    <section class="contact">
-        <h2>Contactez-nous</h2>
-        <form action="#" method="POST">
-            <label for="name">Nom</label>
-            <input type="text" id="name" name="name" required>
-            <label for="email">Email</label>
-            <input type="email" id="email" name="email" required>
-            <label for="message">Message</label>
-            <textarea id="message" name="message" required></textarea>
-            <button type="submit">Envoyer</button>
-        </form>
+    <!-- Section Valeurs -->
+    <section class="values-section">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-subtitle">Notre Engagement</span>
+                <h2 class="section-title">L'Excellence Marocaine</h2>
+            </div>
+            
+            <div class="values-grid">
+                <div class="value-card">
+                    <div class="value-icon">
+                        <i class="fas fa-seedling"></i>
+                    </div>
+                    <h3>100% Naturel</h3>
+                    <p>Ingrédients purs issus de l'agriculture biologique marocaine</p>
+                </div>
+                
+                <div class="value-card">
+                    <div class="value-icon">
+                        <i class="fas fa-hands"></i>
+                    </div>
+                    <h3>Artisanal</h3>
+                    <p>Fabriqué à la main selon des méthodes traditionnelles</p>
+                </div>
+                
+                <div class="value-card">
+                    <div class="value-icon">
+                        <i class="fas fa-certificate"></i>
+                    </div>
+                    <h3>Certifié Bio</h3>
+                    <p>Produits certifiés par les labels internationaux</p>
+                </div>
+                
+                <div class="value-card">
+                    <div class="value-icon">
+                        <i class="fas fa-recycle"></i>
+                    </div>
+                    <h3>Éco-responsable</h3>
+                    <p>Emballages recyclables et programme de reprise</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section Rituel -->
+    <section class="ritual-section">
+        <div class="container">
+            <div class="ritual-container">
+                <div class="ritual-content">
+                    <span class="section-subtitle">L'Expérience</span>
+                    <h2 class="section-title">Rituel Hammam Royal</h2>
+                    <p>Découvrez notre routine de soins complète inspirée des traditions marocaines pour une peau radieuse et purifiée.</p>
+                    
+                    <ol class="ritual-steps">
+                        <li>
+                            <strong>Nettoyage en profondeur</strong> avec notre Savon Noir enrichi en huile d'olive
+                        </li>
+                        <li>
+                            <strong>Exfoliation douce</strong> au gommage Ghassoul et rose de Damas
+                        </li>
+                        <li>
+                            <strong>Nutrition intense</strong> avec notre Huile d'Argan biologique
+                        </li>
+                    </ol>
+                    
+                    <a href="rituel.html" class="btn btn-primary">Découvrir le rituel</a>
+                </div>
+                
+                <div class="ritual-media">
+                    <img src="https://images.unsplash.com/photo-1551232864-3f0890e580d9?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Rituel Hammam">
+                    <button class="play-btn">
+                        <i class="fas fa-play"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter Luxe -->
+    <section class="newsletter-luxe">
+        <div class="newsletter-container">
+            <div class="newsletter-content">
+                <h2>Rejoignez Notre Univers</h2>
+                <p>Abonnez-vous à notre newsletter pour recevoir en exclusivité nos nouveautés, conseils beauté et offres privilèges.</p>
+            </div>
+            <form class="newsletter-form">
+                <input type="email" placeholder="Votre adresse email" required>
+                <button type="submit">S'abonner</button>
+            </form>
+        </div>
     </section>
 
     <!-- Footer -->
-    <footer>
-        <p>&copy; 2025 Natus Marrakech | Tous droits réservés</p>
+    <footer class="main-footer">
+        <div class="footer-container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h3>Oriental Aura</h3>
+                    <p>L'excellence de la beauté marocaine traditionnelle.</p>
+                    <div class="social-links">
+                        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" aria-label="Pinterest"><i class="fab fa-pinterest-p"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-col">
+                    <h3>Boutique</h3>
+                    <ul>
+                        <li><a href="soins-visage.html">Soins Visage</a></li>
+                        <li><a href="soins-corps.html">Soins Corps</a></li>
+                        <li><a href="maquillage.html">Maquillage</a></li>
+                        <li><a href="nouveautes.html">Nouveautés</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-col">
+                    <h3>Informations</h3>
+                    <ul>
+                        <li><a href="livraison.html">Livraison & Retours</a></li>
+                        <li><a href="cgv.html">Conditions Générales</a></li>
+                        <li><a href="confidentialite.html">Confidentialité</a></li>
+                        <li><a href="faq.html">FAQ</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-col">
+                    <h3>Contact</h3>
+                    <ul>
+                        <li><i class="fas fa-map-marker-alt"></i> 12 Rue des Oliviers, Marrakech</li>
+                        <li><i class="fas fa-phone"></i> +212 6 12 34 56 78</li>
+                        <li><i class="fas fa-envelope"></i> contact@orientalaura.com</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2023 Oriental Aura. Tous droits réservés.</p>
+            </div>
+        </div>
     </footer>
 
+    <script>
+        // Menu Mobile
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const mainNav = document.getElementById('mainNav');
+        
+        mobileMenuBtn.addEventListener('click', function() {
+            mainNav.classList.toggle('active');
+            this.querySelector('i').classList.toggle('fa-times');
+            this.querySelector('i').classList.toggle('fa-bars');
+        });
+        
+        // Header Scroll Effect
+        window.addEventListener('scroll', function() {
+            const header = document.querySelector('.main-header');
+            if (window.scrollY > 100) {
+                header.style.padding = '0.8rem 0';
+                header.style.boxShadow = '0 2px 15px rgba(0,0,0,0.1)';
+                document.querySelector('.brand-logo img').style.height = '50px';
+            } else {
+                header.style.padding = '1.2rem 0';
+                header.style.boxShadow = '0 2px 20px rgba(0,0,0,0.08)';
+                document.querySelector('.brand-logo img').style.height = '60px';
+            }
+        });
+        
+        // Animation au Scroll
+        const animateOnScroll = function() {
+            const elements = document.querySelectorAll('.product-card, .value-card');
+            
+            elements.forEach(element => {
+                const elementPosition = element.getBoundingClientRect().top;
+                const screenPosition = window.innerHeight / 1.2;
+                
+                if (elementPosition < screenPosition) {
+                    element.style.opacity = '1';
+                    element.style.transform = 'translateY(0)';
+                }
+            });
+        };
+        
+        // Initialisation
+        document.addEventListener('DOMContentLoaded', function() {
+            const elements = document.querySelectorAll('.product-card, .value-card');
+            elements.forEach(element => {
+                element.style.opacity = '0';
+                element.style.transform = 'translateY(30px)';
+                element.style.transition = 'all 0.6s ease-out';
+            });
+            
+            window.addEventListener('scroll', animateOnScroll);
+            animateOnScroll();
+        });
+    </script>
 </body>
-
 </html>
